@@ -3,18 +3,23 @@ package ru.senko.hermes.model.base;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.FutureTask;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Account {
 
     Crypto balance;
-    List<Strategy> strategies;
+    Map<String, FutureTask<?>> strategies;
+
+    public Account() {
+        balance = new Crypto();
+        strategies = new HashMap<>();
+    }
 
 }
