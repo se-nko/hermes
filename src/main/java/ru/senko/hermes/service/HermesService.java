@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import ru.senko.hermes.model.base.Account;
 import ru.senko.hermes.model.base.CryptoPair;
 import ru.senko.hermes.model.base.Strategy;
+import ru.senko.hermes.model.signal.SignalsObserver;
+import ru.senko.hermes.model.signal.impl.TestSignal;
 
 import javax.annotation.PostConstruct;
 import java.util.Set;
@@ -15,12 +17,15 @@ import java.util.concurrent.FutureTask;
 public class HermesService {
 
     private Account account;
+    private SignalsObserver observer = new SignalsObserver();
     private ExecutorService executorService;
 
     @PostConstruct
     public void postConstruct() {
         account = new Account();
         executorService = Executors.newSingleThreadExecutor();
+        observer.addSignal(new TestSignal(5));
+        observer.addSignal(new TestSignal(7));
     }
 
     public String getBalance() {
