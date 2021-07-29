@@ -28,10 +28,10 @@ public class Strategy implements Callable {
     public Object call() throws Exception {
         while (true) {
             try {
-                log.info("I'm working");
-                Thread.sleep(5000);
+                algoritm.start();
             } catch (InterruptedException ex) {
                 log.info("I was interrupted!");
+                algoritm.stop();
                 break;
             }
         }

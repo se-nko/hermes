@@ -2,6 +2,8 @@ package ru.senko.hermes.model.algoritm;
 
 public interface Algoritm {
 
-    void start();
+    void start() throws Exception;
+
+    void stop();
 
 }

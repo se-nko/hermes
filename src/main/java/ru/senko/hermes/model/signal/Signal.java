@@ -1,26 +1,18 @@
 package ru.senko.hermes.model.signal;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import java.util.concurrent.TimeUnit;
 
 @NoArgsConstructor
 public abstract class Signal {
 
-    @Getter @Setter
-    private int actualTime;
-    protected SignalsObserver observer;
+    protected int actualTime;
+    protected TimeUnit timeUnit;
 
-    public Signal(int actualTime) {
+    public Signal(int actualTime, TimeUnit timeUnit) {
         this.actualTime = actualTime;
-    }
-
-    public void fire() {
-        observer.trigger(this);
-    }
-
-    void setListener(SignalsObserver observer) {
-        this.observer = observer;
+        this.timeUnit = timeUnit;
     }
 
 }

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.senko.hermes.model.algoritm.Algoritms;
 import ru.senko.hermes.service.HermesService;
 
 import javax.websocket.server.PathParam;
@@ -25,7 +26,7 @@ public class TelegramController {
     }
 
     @GetMapping("/acc/strategies")
-    public Set<String> getStrategies() {
+    public Set<Algoritms> getStrategies() {
         return hermes.getStrategies();
     }
 
