@@ -1,0 +1,8 @@
+server:
+  servlet:
+    context-path: /hermes/api
+
+binance:
+  api:
+    key: key
+    secret: secret
