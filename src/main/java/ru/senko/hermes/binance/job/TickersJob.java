@@ -18,7 +18,7 @@ public class TickersJob {
 
     private final BinanceApiRestClient restClient;
 
-    @Scheduled(fixedRate = 60000)
+//    @Scheduled(fixedRate = 60000)
     private void call() {
         List<TickerPrice> tickerPrices = restClient.getAllPrices();
         tickerPrices.forEach(tickerPrice -> {
