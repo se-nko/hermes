@@ -1,4 +1,4 @@
-package ru.senko.hermes.model.base;
+package ru.senko.hermes.model.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -7,8 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Crypto {
+public class CryptoPair {
+
+    Crypto right, left;
 
 }

@@ -2,7 +2,7 @@ package ru.senko.hermes.service;
 
 import org.springframework.stereotype.Service;
 import ru.senko.hermes.model.algoritm.Algoritms;
-import ru.senko.hermes.model.base.Account;
+import ru.senko.hermes.model.domain.Account;
 
 import javax.annotation.PostConstruct;
 import java.util.Set;

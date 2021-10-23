@@ -1,4 +1,4 @@
-package ru.senko.hermes.model.base;
+package ru.senko.hermes.model.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
