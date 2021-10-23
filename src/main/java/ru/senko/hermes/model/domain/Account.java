@@ -21,12 +21,14 @@ import java.util.concurrent.FutureTask;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Account {
 
+    String name;
     Crypto balance;
     Map<Algoritms, FutureTask<?>> strategies;
     Set<Algoritms> runningStrategies;
     ExecutorService executorService;
 
-    public Account() {
+    public Account(String name) {
+        this.name = name;
         balance = new Crypto();
         strategies = new HashMap<>();
         runningStrategies = new HashSet<>();

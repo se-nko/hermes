@@ -20,24 +20,24 @@ public class TelegramController {
     private final HermesService hermes;
 
 
-    @GetMapping("/acc/balance")
-    public String getBalance() {
-        return hermes.getBalance();
-    }
-
-    @GetMapping("/acc/strategies")
-    public Set<Algoritms> getStrategies() {
-        return hermes.getStrategies();
-    }
-
-    @GetMapping("/acc/strategies/start")
-    public String startStrategy(@PathParam("name") String name) {
-        return hermes.startStrategy(name);
-    }
-
-    @GetMapping("/acc/strategies/stop")
-    public String stopStrategy(@PathParam("name") String name) {
-        return hermes.stopStrategy(name);
-    }
+//    @GetMapping("/acc/balance")
+//    public String getBalance() {
+////        return hermes.getBalance();
+//    }
+//
+//    @GetMapping("/acc/strategies")
+//    public Set<Algoritms> getStrategies() {
+//        return hermes.getStrategies();
+//    }
+//
+//    @GetMapping("/acc/strategies/start")
+//    public String startStrategy(@PathParam("name") String name) {
+//        return hermes.startStrategy(name);
+//    }
+//
+//    @GetMapping("/acc/strategies/stop")
+//    public String stopStrategy(@PathParam("name") String name) {
+//        return hermes.stopStrategy(name);
+//    }
 
 }
