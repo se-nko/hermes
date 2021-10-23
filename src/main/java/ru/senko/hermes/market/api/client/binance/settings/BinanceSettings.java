@@ -1,4 +1,4 @@
-package ru.senko.hermes.binance.settings;
+package ru.senko.hermes.market.api.client.binance.settings;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

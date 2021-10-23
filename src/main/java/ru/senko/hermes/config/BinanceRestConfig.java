@@ -5,7 +5,7 @@ import com.binance.api.client.BinanceApiRestClient;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.senko.hermes.binance.settings.BinanceSettings;
+import ru.senko.hermes.market.api.client.binance.settings.BinanceSettings;
 
 @Configuration
 @AllArgsConstructor

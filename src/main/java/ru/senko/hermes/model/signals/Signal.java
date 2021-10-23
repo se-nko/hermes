@@ -1,4 +1,4 @@
-package ru.senko.hermes.model.signal;
+package ru.senko.hermes.model.signals;
 
 import lombok.NoArgsConstructor;
 

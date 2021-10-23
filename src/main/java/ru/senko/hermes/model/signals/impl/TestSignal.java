@@ -1,7 +1,7 @@
-package ru.senko.hermes.model.signal.impl;
+package ru.senko.hermes.model.signals.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import ru.senko.hermes.model.signal.Signal;
+import ru.senko.hermes.model.signals.Signal;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

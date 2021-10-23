@@ -2,7 +2,7 @@ package ru.senko.hermes.model.algoritm.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.senko.hermes.model.algoritm.Algoritm;
-import ru.senko.hermes.model.signal.impl.TestSignal;
+import ru.senko.hermes.model.signals.impl.TestSignal;
 import java.util.List;
 import java.util.concurrent.*;
 
