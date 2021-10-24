@@ -19,6 +19,10 @@ public class TelegramController {
 
     private final HermesService hermes;
 
+    @GetMapping
+    public String hello() {
+        return "Hello";
+    }
 
 //    @GetMapping("/acc/balance")
 //    public String getBalance() {
