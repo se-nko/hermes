@@ -6,3 +6,7 @@ binance:
   api:
     key: 2EjRTQdxzGYdxQchUmWcPpjtHPo8EVAdITftFQF0xv4i8kOjbBF897kLGOJo378r
     secret: jjrGe1gos9zbK4OZ4ULCOwjqdQwKQ4jcSfeo1jikVLBd7f80w3vf5GxgVliUOKjS
+
+cron:
+  binance:
+    tickers: "*/3 * * * * *" # every 3 seconds
