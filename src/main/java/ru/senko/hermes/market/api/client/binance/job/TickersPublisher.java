@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import ru.senko.hermes.market.api.client.binance.model.Currency;
 import ru.senko.hermes.market.api.client.binance.model.Subscriber;
 
 import java.util.*;
@@ -20,12 +21,17 @@ import java.util.stream.Stream;
 public class TickersPublisher {
 
     private final BinanceApiRestClient restClient;
-    private final Map<String, TickerPrice> tickers = new HashMap<>();
-    private final Map<String, List<Subscriber<TickerPrice>>> subscribers = new HashMap<>();
+    private final Map<Currency, TickerPrice> tickers = new HashMap<>();
+    private final Map<Currency, List<Subscriber<TickerPrice>>> subscribers = new HashMap<>();
 
-    public void subscribe(String code, Subscriber<TickerPrice> subscriber) {
-        subscribers.merge(code, List.of(subscriber),
+    public void subscribe(Currency currency, Subscriber<TickerPrice> subscriber) {
+        subscribers.merge(currency, List.of(subscriber),
                 (a, b) -> Stream.of(a, b).flatMap(Collection::stream).collect(Collectors.toList()));
+    }
+
+    public void unSubscribe(Currency currency, Subscriber<TickerPrice> subscriber) {
+        Optional.ofNullable(subscribers.get(currency))
+                .ifPresent(list -> list.remove(subscriber));
     }
 
     @Scheduled(cron = "${cron.binance.tickers}")
@@ -33,15 +39,16 @@ public class TickersPublisher {
         log.info("START TO UPDATE TICKERS");
         restClient.getAllPrices().forEach(ticker -> {
             try {
-                if (tickers.put(ticker.getSymbol(), ticker) != null) {
-                    Optional.ofNullable(subscribers.get(ticker.getSymbol()))
-                            .ifPresent(list -> list.forEach(subscriber -> subscriber.notify(ticker)));
-                }
+                Currency.getBySymbol(ticker.getSymbol()).ifPresent(currency -> {
+                    if (tickers.put(currency, ticker) != null) {
+                        Optional.ofNullable(subscribers.get(currency))
+                                .ifPresent(list -> list.forEach(subscriber -> subscriber.notify(ticker)));
+                    }
+                });
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
             }
         });
-        log.info("END TO UPDATE TICKERS");
     }
 
 }

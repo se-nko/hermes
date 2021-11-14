@@ -2,7 +2,8 @@ package ru.senko.hermes.model.algoritm;
 
 public enum Algoritms {
 
-    SCALPING("scalping");
+    SCALPING("scalping"),
+    AVERAGING("averaging");
 
     private String name;
 
