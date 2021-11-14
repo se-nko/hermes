@@ -14,7 +14,7 @@
 	<name>hermes</name>
 	<description>Project for Spring Boot</description>
 	<properties>
-<!--		<java.version>12</java.version>-->
+		<java.version>12</java.version>
 	</properties>
 	<dependencies>
 <!--		<dependency>-->
@@ -45,7 +45,8 @@
 			<groupId>com.binance.api</groupId>
 			<artifactId>binance-api-client</artifactId>
 			<version>1.0.1</version>
-			<scope>compile</scope>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/binance-api-client-1.0.1.jar</systemPath>
 		</dependency>
 	</dependencies>
 
