@@ -45,7 +45,8 @@
 			<groupId>com.binance.api</groupId>
 			<artifactId>binance-api-client</artifactId>
 			<version>1.0.1</version>
-			<scope>compile</scope>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/binance-api-client-1.0.1.jar</systemPath>
 		</dependency>
 	</dependencies>
 
