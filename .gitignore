@@ -15,7 +15,6 @@ target/
 
 ### Hermes ###
 
-libs/*
 spring-shell.log
 
 ### IntelliJ IDEA ###
