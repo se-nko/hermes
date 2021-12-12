@@ -7,6 +7,14 @@ binance:
     key: 2EjRTQdxzGYdxQchUmWcPpjtHPo8EVAdITftFQF0xv4i8kOjbBF897kLGOJo378r
     secret: jjrGe1gos9zbK4OZ4ULCOwjqdQwKQ4jcSfeo1jikVLBd7f80w3vf5GxgVliUOKjS
 
+spring:
+  datasource:
+    url: jdbc:postgresql://185.251.91.210:5432/hermes_dev
+    username: postgres
+    password: postgres
+#  jpa:
+#    show-sql: true
+
 cron:
   binance:
     tickers: "*/3 * * * * *" # every 3 seconds

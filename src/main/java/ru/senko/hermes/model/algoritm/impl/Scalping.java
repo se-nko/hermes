@@ -1,13 +1,13 @@
 package ru.senko.hermes.model.algoritm.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import ru.senko.hermes.model.algoritm.Algoritm;
+import ru.senko.hermes.model.algoritm.Algorithm;
 import ru.senko.hermes.model.signals.impl.TestSignal;
 import java.util.List;
 import java.util.concurrent.*;
 
 @Slf4j
-public class Scalping implements Algoritm {
+public class Scalping implements Algorithm {
 
     private static final int SIGNALS_COUNT = 2;
     private final CyclicBarrier barrier;

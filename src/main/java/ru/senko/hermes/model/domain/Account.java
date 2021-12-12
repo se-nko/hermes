@@ -4,8 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import ru.senko.hermes.model.algoritm.Algoritm;
-import ru.senko.hermes.model.algoritm.Algoritms;
+import ru.senko.hermes.model.algoritm.Algorithm;
 import ru.senko.hermes.model.algoritm.impl.Scalping;
 
 import java.util.HashMap;
@@ -16,6 +15,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
+import static ru.senko.hermes.model.algoritm.Algorithm.SCALPING;
+
 @Data
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -23,8 +24,8 @@ public class Account {
 
     String name;
     Crypto balance;
-    Map<Algoritms, FutureTask<?>> strategies;
-    Set<Algoritms> runningStrategies;
+    Map<String, FutureTask<?>> strategies;
+    Set<String> runningStrategies;
     ExecutorService executorService;
 
     public Account(String name) {
@@ -35,24 +36,24 @@ public class Account {
         executorService = Executors.newSingleThreadExecutor();
     }
 
-    public void startAlgoritm(Algoritms algoritm) {
+    public void startAlgoritm(String algoritm) {
         FutureTask<?> task = getStrategyTask(algoritm);
         strategies.put(algoritm, task);
         executorService.submit(task);
         runningStrategies.add(algoritm);
     }
 
-    public void stopAlgoritm(Algoritms algoritm) {
+    public void stopAlgoritm(String algoritm) {
         strategies.get(algoritm).cancel(true);
         runningStrategies.remove(algoritm);
     }
 
-    public boolean isAlgoritmRunning(Algoritms algoritm) {
+    public boolean isAlgoritmRunning(String algoritm) {
         return runningStrategies.contains(algoritm);
     }
 
-    private FutureTask<?> getStrategyTask(Algoritms algoritm) {
-        Algoritm task = null;
+    private FutureTask<?> getStrategyTask(String algoritm) {
+        Algorithm task = null;
         switch (algoritm) {
             case SCALPING:
                 task = new Scalping(); break;

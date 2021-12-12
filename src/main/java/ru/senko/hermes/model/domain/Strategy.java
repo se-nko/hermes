@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import ru.senko.hermes.model.algoritm.Algoritm;
+import ru.senko.hermes.model.algoritm.Algorithm;
 
 import java.util.concurrent.Callable;
 
@@ -17,21 +17,21 @@ public class Strategy implements Callable {
 
     CryptoPair pair;
     Shedule shedule;
-    Algoritm algoritm;
+    Algorithm algorithm;
 
-    public Strategy(CryptoPair pair, Algoritm algoritm) {
+    public Strategy(CryptoPair pair, Algorithm algorithm) {
         this.pair = pair;
-        this.algoritm = algoritm;
+        this.algorithm = algorithm;
     }
 
     @Override
     public Object call() throws Exception {
         while (true) {
             try {
-                algoritm.start();
+                algorithm.start();
             } catch (InterruptedException ex) {
                 log.info("I was interrupted!");
-                algoritm.stop();
+                algorithm.stop();
                 break;
             }
         }
