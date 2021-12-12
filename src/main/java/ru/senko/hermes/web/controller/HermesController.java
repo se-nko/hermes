@@ -1,10 +1,15 @@
 package ru.senko.hermes.web.controller;
 
+import com.binance.api.client.domain.account.AssetBalance;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import ru.senko.hermes.service.AccountService;
 import ru.senko.hermes.service.HermesService;
 import ru.senko.hermes.web.dto.AccountDTO;
@@ -32,9 +37,14 @@ public class HermesController {
         return errorWithStatus(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping("account/{id}/balance")
-    public ResponseEntity<String> getBalance(@PathVariable Long id) {
-        return ResponseEntity.ok("");
+    @GetMapping("account/balance/{code}")
+    public ResponseEntity<String> getBalance(@PathVariable String code) {
+        return ResponseEntity.ok(accountService.getBalance(code));
+    }
+
+    @GetMapping("account/balances")
+    public ResponseEntity<List<AssetBalance>> getBalances() {
+        return ResponseEntity.ok(accountService.getBalances());
     }
 
     @GetMapping("/strategies")

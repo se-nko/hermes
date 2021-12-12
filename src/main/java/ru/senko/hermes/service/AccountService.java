@@ -1,5 +1,7 @@
 package ru.senko.hermes.service;
 
+import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.domain.account.AssetBalance;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.val;
@@ -15,6 +17,7 @@ import static ru.senko.hermes.utils.MapperUtil.entity;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final BinanceApiRestClient binanceClient;
 
     @SneakyThrows
     public AccountDTO create(AccountDTO accountDTO) {
