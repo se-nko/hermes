@@ -1,12 +1,18 @@
 package ru.senko.hermes.model.algoritm;
 
-public interface Algorithm {
+import ru.senko.hermes.market.api.client.binance.TradeEventListener;
+import ru.senko.hermes.web.dto.AccountSettingDTO;
 
-    String SCALPING = "scalping";
-    String AVERAGING  = "averaging";
+public abstract class Algorithm implements Runnable {
 
-    void start() throws Exception;
+    public static final String SCALPING = "scalping";
+    public static final String AVERAGING  = "averaging";
 
-    void stop();
+    protected AccountSettingDTO setting;
+    protected TradeEventListener publisher;
+
+    protected abstract void start();
+
+    protected abstract void stop();
 
 }

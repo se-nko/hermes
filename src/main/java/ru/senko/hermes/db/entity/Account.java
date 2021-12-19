@@ -3,23 +3,18 @@ package ru.senko.hermes.db.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Column;
+import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "accounts")
+@Table(name = "account")
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accounts_id_seq")
-    @SequenceGenerator(name = "accounts_id_seq", sequenceName = "accounts_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_id_seq")
+    @SequenceGenerator(name = "account_id_seq", sequenceName = "account_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -32,4 +27,6 @@ public class Account {
     @Column(name = "api_secret")
     private String apiSecret;
 
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    private Set<AccountSetting> accountSettings;
 }

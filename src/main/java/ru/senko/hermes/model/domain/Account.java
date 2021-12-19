@@ -36,12 +36,12 @@ public class Account {
         executorService = Executors.newSingleThreadExecutor();
     }
 
-    public void startAlgoritm(String algoritm) {
-        FutureTask<?> task = getStrategyTask(algoritm);
-        strategies.put(algoritm, task);
-        executorService.submit(task);
-        runningStrategies.add(algoritm);
-    }
+//    public void startAlgoritm(String algoritm) {
+//        FutureTask<?> task = getStrategyTask(algoritm);
+//        strategies.put(algoritm, task);
+//        executorService.submit(task);
+//        runningStrategies.add(algoritm);
+//    }
 
     public void stopAlgoritm(String algoritm) {
         strategies.get(algoritm).cancel(true);
@@ -52,13 +52,13 @@ public class Account {
         return runningStrategies.contains(algoritm);
     }
 
-    private FutureTask<?> getStrategyTask(String algoritm) {
-        Algorithm task = null;
-        switch (algoritm) {
-            case SCALPING:
-                task = new Scalping(); break;
-        }
-        return new FutureTask<>(new Strategy(new CryptoPair(), task));
-    }
+//    private FutureTask<?> getStrategyTask(String algoritm) {
+//        Algorithm task = null;
+//        switch (algoritm) {
+//            case SCALPING:
+//                task = new Scalping(); break;
+//        }
+//        return new FutureTask<>(new Strategy(new CryptoPair(), task));
+//    }
 
 }

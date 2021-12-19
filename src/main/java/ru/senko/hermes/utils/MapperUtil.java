@@ -2,23 +2,25 @@ package ru.senko.hermes.utils;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.val;
 import org.springframework.beans.BeanUtils;
-import ru.senko.hermes.db.entity.Account;
-import ru.senko.hermes.web.dto.AccountDTO;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MapperUtil {
 
-    public static Account entity(AccountDTO dto) {
-        val entity = new Account();
+    @SneakyThrows
+    public static <E, D> E entity(Class<E> entityClass, D dto) {
+        val entity = entityClass.getDeclaredConstructor().newInstance();
         BeanUtils.copyProperties(dto, entity);
         return entity;
     }
 
-    public static AccountDTO dto(Account entity) {
-        val dto = new AccountDTO();
+    @SneakyThrows
+    public static <E, D> D dto(Class<D> dtoClass, E entity) {
+        val dto = dtoClass.getDeclaredConstructor().newInstance();
         BeanUtils.copyProperties(entity, dto);
         return dto;
     }
+
 }
